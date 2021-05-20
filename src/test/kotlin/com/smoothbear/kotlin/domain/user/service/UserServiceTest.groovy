@@ -1,8 +1,8 @@
 package com.smoothbear.kotlin.domain.user.service
 
-import com.smoothbear.jpa.domain.user.controller.dto.RegisterReq
-import com.smoothbear.jpa.domain.user.domain.User
-import com.smoothbear.jpa.domain.user.repository.UserRepository
+import com.smoothbear.kotlin.domain.user.controller.dto.RegisterReq
+import com.smoothbear.kotlin.domain.user.domain.User
+import com.smoothbear.kotlin.domain.user.repository.UserRepository
 import spock.lang.Specification
 
 class UserServiceTest extends Specification {
