@@ -2,6 +2,7 @@ package com.smoothbear.kotlin.domain.user.service
 
 import com.smoothbear.kotlin.domain.user.controller.dto.RegisterReq
 import com.smoothbear.kotlin.domain.user.domain.User
+import com.smoothbear.kotlin.domain.user.exception.UserAlreadyExistsException
 import com.smoothbear.kotlin.domain.user.repository.UserRepository
 import spock.lang.Specification
 
@@ -17,6 +18,8 @@ class UserServiceTest extends Specification {
         then:
         userRepository.findById("smoothbear@gmail.com") >> null
         userRepository.findById(email) >> new User(0, email, password, name)
+
+        notThrown UserAlreadyExistsException
 
         where:
         email                  | password   | name

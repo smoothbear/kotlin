@@ -6,6 +6,7 @@ plugins {
     kotlin("jvm") version "1.4.32"
     kotlin("plugin.spring") version "1.4.32"
     kotlin("plugin.jpa") version "1.4.32"
+    groovy
 }
 
 group = "com.smoothbear"
@@ -17,15 +18,20 @@ repositories {
 }
 
 dependencies {
+    val spockVersion = "1.3-groovy-2.5"
+
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web-services")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("org.spockframework:spock-core")
     runtimeOnly("mysql:mysql-connector-java")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.spockframework:spock-core:1.1-groovy-2.4")
-    testImplementation("org.spockframework:spock-spring:1.1-groovy-2.4")
+
+    // For spock
+    testRuntimeOnly("org.codehaus.groovy:groovy")
+    testImplementation("org.spockframework:spock-core:$spockVersion")
+    testImplementation("org.spockframework:spock-spring:$spockVersion")
+    testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
 }
 
 tasks.withType<KotlinCompile> {
